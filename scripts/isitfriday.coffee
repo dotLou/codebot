@@ -1,5 +1,5 @@
 # Description:
-#   Is it Friday?
+#   This script listens for "Is it Friday"? and will respond accordingly.
 #
 # Dependencies:
 #   moment
