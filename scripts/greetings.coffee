@@ -9,7 +9,7 @@
 # Author:
 #   dotLou
 
-enterReplies = ['Hi', 'Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']
+enterReplies = ['Hi', 'Howdy Partner','Target Acquired', 'Firing', 'Hello friend.', 'Gotcha', 'I see you']
 leaveReplies = ['DONT GO!', 'Fine.. just leave. I see how it is.', 'Adios amigo.']
 
 module.exports = (robot) ->
