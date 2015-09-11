@@ -17,11 +17,11 @@ leaveReplies = ['DONT GO!', 'Fine.. just leave. I see how it is.', 'Adios amigo.
 module.exports = (robot) ->
   robot.respond /(hi)|(hello)|(yo)|(hola)/i, (res) ->
     res.send res.random enterReplies
-  robot.hear /(hi)|(hello)|(yo)|(hola) .?versabot/i, (res) ->
+  robot.hear /((hi)|(hello)|(yo)|(hola)) .?versabot/i, (res) ->
     res.send res.random enterReplies
   robot.respond /(bye)|(adios)/i, (res) ->
     res.send res.random leaveReplies
-  robot.hear /(bye)|(adios) .?versabot/i, (res) ->
+  robot.hear /((bye)|(adios)) .?versabot/i, (res) ->
     res.send res.random leaveReplies
   robot.respond /thanks/i, (res) ->
     res.send "You're welcome"
