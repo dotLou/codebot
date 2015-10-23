@@ -22,7 +22,7 @@ daylist = [
   'Saturday'  
 ]
 module.exports = (robot) ->
-  robot.hear /is it friday|how long till friday|friday yet/i, (msg) ->
+  robot.hear /is it friday|how long till friday|friday yet|is today friday/i, (msg) ->
     day = today()
     if (day == "Friday")
       msg.send "Yep, it's Friday"
