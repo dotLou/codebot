@@ -43,7 +43,15 @@ lookupWeather = (msg, coords, err) ->
       return msg.send "Could not parse weather data."
     humidity = (current.humidity * 100).toFixed 0
     temperature = getTemp(current.temperature)
-    text = "It is currently #{temperature} #{current.summary}, #{humidity}% humidity"
+    precipIntensity = current.precipIntensity
+    precipProbability = current.precipProbability * 100
+    precipType = current.precipType
+    precipAccumulation = current.precipAccumulation
+
+    text = "It is currently #{temperature} #{current.summary}, #{humidity}% humidity. "
+    text += "P.O.P: #{precipProbability}%"
+    text += " (#{precipType}). " if precipType?
+    text += "Accumulation: #{precipAccumulation} in" if precipAccumulation?
     msg.send text
 
 lookupForecast = (msg, coords, err) ->
@@ -70,14 +78,24 @@ lookupForecast = (msg, coords, err) ->
       humidity = (data.humidity * 100).toFixed 0
       maxTemp = getTemp data.temperatureMax
       minTemp = getTemp data.temperatureMin
+      precipIntensity = data.precipIntensity
+      precipProbability = data.precipProbability * 100
+      precipType = data.precipType
+      precipAccumulation = data.precipAccumulation
 
       text += "#{month}/#{day} - High of #{maxTemp}, low of: #{minTemp} "
-      text += "#{data.summary} #{humidity}% humidity\n"
+      text += "#{data.summary} #{humidity}% humidity "
+      text += "P.O.P: #{precipProbability}%"
+      text += " (#{precipType}). " if precipType?
+      text += "Accumulation: #{precipAccumulation} in" if precipAccumulation?
+      text += "\n"
       text
 
     text = appendText text, today
     text = appendText text, tomorrow
     text = appendText text, dayAfter
+    text = appendText text, forecast[3]
+    text = appendText text, forecast[4]
     msg.send text
 
 getTemp = (c) ->
