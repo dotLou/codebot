@@ -45,6 +45,7 @@ lookupWeather = (msg, coords, err) ->
     temperature = getTemp(current.temperature)
     precipIntensity = current.precipIntensity
     precipProbability = current.precipProbability * 100
+    precipProbability = precipProbability.toFixed(2)
     precipType = current.precipType
     precipAccumulation = current.precipAccumulation
 
@@ -80,6 +81,7 @@ lookupForecast = (msg, coords, err) ->
       minTemp = getTemp data.temperatureMin
       precipIntensity = data.precipIntensity
       precipProbability = data.precipProbability * 100
+      precipProbability = precipProbability.toFixed(2)
       precipType = data.precipType
       precipAccumulation = data.precipAccumulation
 
